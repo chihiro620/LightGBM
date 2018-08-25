@@ -18,7 +18,7 @@ conda install numpy nose scipy scikit-learn pandas matplotlib python-graphviz py
 mkdir $TRAVIS_BUILD_DIR/build && cd $TRAVIS_BUILD_DIR/build
 
 cmake -DUSE_SWIG=ON ..
-make _lightgbm_swig || exit -1
+make || exit -1
 
 cd $TRAVIS_BUILD_DIR/build/com/microsoft/ml/lightgbm/linux/x86_64
 ls -l
