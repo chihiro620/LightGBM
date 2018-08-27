@@ -179,6 +179,9 @@ if(USE_SWIG)
   set_property(SOURCE swig/lightgbmlib.i PROPERTY SWIG_FLAGS "${swig_options}")
   swig_add_module(_lightgbm_swig java swig/lightgbmlib.i)
   swig_link_libraries(_lightgbm_swig _lightgbm)
+  # needed to ensure linux build does not have lib specified twice, eg liblib_lightgbm_swig
+  set_target_properties(_lightgbm_swig PROPERTIES PREFIX "")
+  # needed in latest version of cmake for VS and MINGW builds to ensure output dll has lib prefix
   set_target_properties(_lightgbm_swig PROPERTIES OUTPUT_NAME "lib_lightgbm_swig")
   if(WIN32)
     if(MINGW OR CYGWIN)
